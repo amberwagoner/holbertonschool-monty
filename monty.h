@@ -7,7 +7,7 @@
 #include <unistd.h>
 
 /* Global Variable */
-extern char **op_toks;
+extern char *arg;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -54,6 +54,8 @@ void swap(stack_t **stack, unsigned int line_number);
 /* ops2.c */
 void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
+void free_stack(stack_t **stack);
+void executor(stack_t **stack, char *cmd, unsigned int lncnt);
 
 #endif /* MONTY_H */
 
