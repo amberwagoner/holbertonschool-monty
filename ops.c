@@ -23,7 +23,7 @@ void push(stack_t **stack, unsigned int line_number)
 		arg = "error"
 		exit(EXIT_FAILURE);
 	}
-	
+
 	while (*arg)
 	{
 		if (*arg == '-')
@@ -102,6 +102,7 @@ void pint(stack_t **stack, unsigned int line_number)
 * pop - removes top element of stack
 * @stack: pointer to head of stack
 * @line_number: line count from main
+* Return: void
 */
 void pop(stack_t **stack, unsigned int line_number)
 {
@@ -120,14 +121,13 @@ void pop(stack_t **stack, unsigned int line_number)
 	if (!*stack)
 		return;
 	(*stack)->next = NULL;
-
-	return;
 }
 
 /**
 * swap - swaps top two nodes of the stack
 * @stack: pointer to head of the stack
 * @line_number: line count from main
+* Return: void
 */
 void swap(stack_t **stack, unsigned int line_number)
 {
@@ -153,7 +153,4 @@ void swap(stack_t **stack, unsigned int line_number)
 	current->n = x;
 	current = current->next;
 	current->n = y;
-
-	return;
-}
 }
