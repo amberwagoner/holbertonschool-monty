@@ -29,8 +29,10 @@ void get_opcode(stack_t **stack, char *cmd, unsigned int line_number)
 	for (i = 0; op_funcs[i].opcode; i++)
 	{
 		if (strcmp(op_funcs[i].opcode, cmd) == 0)
+		{
 			op_funcs[i].f(stack, line_number);
-			return (op_funcs[i].f);
+			return;
+		}
 	}
 
 	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, cmd);

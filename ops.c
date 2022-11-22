@@ -20,7 +20,7 @@ void push(stack_t **stack, unsigned int line_number)
 	{
 		free(newNode);
 		fprintf(stderr, "Error: malloc failed\n");
-		arg = "error"
+		arg = "error";
 		exit(EXIT_FAILURE);
 	}
 
@@ -93,7 +93,7 @@ void pint(stack_t **stack, unsigned int line_number)
 	else
 	{
 		fprintf(stderr, "L%d: can't print, stack empty\n", line_number);
-		arg = "error"
+		arg = "error";
 		return;
 	}
 }
@@ -132,7 +132,7 @@ void pop(stack_t **stack, unsigned int line_number)
 void swap(stack_t **stack, unsigned int line_number)
 {
 	int x, y;
-	stak_t *current;
+	stack_t *current;
 
 	if (!*stack)
 	{

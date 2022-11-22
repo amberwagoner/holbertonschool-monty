@@ -1,10 +1,18 @@
 #ifndef MONTY_H
 #define MONTY_H
 
+#define  _POSIX_C_SOURCE 200809L
+
 /* Libraries */
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
+#include <ctype.h>
+#include <fcntl.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <limits.h>
 
 /* Global Variable */
 extern char *arg;
@@ -42,7 +50,7 @@ typedef struct instruction_s
 /* Prototypes */
 
 /* get_opcode */
-void (*get_opcode(char *opcode))(stack_t **stack, unsigned int line_number);
+void get_opcode(stack_t **stack, char *cmd, unsigned int line_number);
 
 /* ops.c */
 void push(stack_t **stack, unsigned int line_number);
