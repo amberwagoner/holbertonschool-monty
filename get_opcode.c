@@ -34,7 +34,4 @@ void get_opcode(stack_t **stack, char *cmd, unsigned int line_number)
 			return;
 		}
 	}
-
-	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, cmd);
-	arg = "error";
 }
