@@ -8,14 +8,14 @@
 
 void free_stack(stack_t **stack)
 {
-	stack_t *current = *stack;
-	stack_t *freenode;
+	stack_t *ptr, *tmp;
 
-	while (current)
+	ptr = *stack;
+	while (ptr)
 	{
-		freenode = current;
-		current = current->prev;
-		free(freenode);
+		tmp = ptr;
+		ptr = ptr->next;
+		free(tmp);
+		tmp = NULL;
 	}
-return;
 }
