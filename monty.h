@@ -54,8 +54,9 @@ void swap(stack_t **stack, unsigned int line_number);
 /* ops2.c */
 void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
+
+/* free_stack */
 void free_stack(stack_t **stack);
-void executor(stack_t **stack, char *cmd, unsigned int lncnt);
+
 
 #endif /* MONTY_H */
-
