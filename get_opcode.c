@@ -23,7 +23,7 @@ void get_op(char *function_name, unsigned int line_number, stack_t **stack)
 
 	unsigned int i;
 
-	for (i = 0; op_funcs[i].opcode; i++)
+	for (i = 0; op_funcs[i].opcode != NULL; i++)
 	{
 		if (strcmp(op_funcs[i].opcode, function_name) == 0)
 			op_funcs[i].f(stack, line_number);
