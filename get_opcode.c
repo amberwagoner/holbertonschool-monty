@@ -1,6 +1,14 @@
 #include "monty.h"
 
-void (*get_opcode(char *opcode))(stack_t **stack,char *cmd,  unsigned int line_number)
+/**
+* get_opcode - finds match for provided command
+* @stack: pointer to the stack
+* @cmd: current token from main
+* @line_number: current line
+* Return: appropriate function or NULL if not found
+*/
+
+void get_opcode(stack_t **stack, char *cmd, unsigned int line_number)
 {
 	instruction_t op_funcs[] = {
 		{"push", push},
