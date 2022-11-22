@@ -9,44 +9,34 @@
 
 int main(int argc, char **argv)
 {
-	FILE *fd;
-	ssize_t line_size = 0;
-	size_t buffsize = 1024;
-	char *buffer = malloc(buffsize * sizeof(char));
-	char *cmnd = NULL;
+	FILE *fp;
+	size_t size;
+	char *line;
 	stack_t *stack = NULL;
-	int exitstatus = EXIT_SUCCESS, linecount = 1;
+	unsigned int line_number = 1;
 
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	fd = fopen(argv[1], "r");
-	if (fd == NULL)
+
+	line = NULL;
+	size = 0;
+	fp = fopen(argv[1], "r");
+	if (fp == NULL)
 	{
-		fprintf(stderr, "%s%s\n", "Error: Can't open file ", argv[1]);
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-
-	line_size = getline(&buffer, &buffsize, fd);
-	while (line_size >= 0)
+	while (getline(&line, &size, fp) != -1)
 	{
-		cmnd = strtok(buffer, " \t\n\r");
-		arg = strtok(NULL, " \t\n\r");
-		if (arg == NULL)
-			arg = "notdigit";
-
-		get_opcode(&stack, cmnd, linecount);
-		if (strcmp(arg, "error") == 0)
-		{
-			exitstatus = EXIT_FAILURE;
-			break;
-		}
-
-		line_size = getline(&buffer, &buffsize, fd);
-		linecount++;
+		read_line(line, line_number, &stack);
+		line_number++;
 	}
-	free(buffer), free_stack(&stack), fclose(fd), exit(exitstatus);
-	exit(exitstatus);
+	free_stack(&stack);
+	free(line);
+	line = NULL;
+	fclose(fp);
+	return (0);
 }

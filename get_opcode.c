@@ -1,14 +1,14 @@
 #include "monty.h"
 
 /**
-* get_opcode - finds match for provided command
+* get_op - finds match for provided command
 * @stack: pointer to the stack
-* @cmd: current token from main
+* @function_name: name of the function
 * @line_number: current line
 * Return: appropriate function or NULL if not found
 */
 
-void get_opcode(stack_t **stack, char *cmd, unsigned int line_number)
+void get_op(char *function_name, unsigned int line_number, stack_t **stack)
 {
 	instruction_t op_funcs[] = {
 		{"push", push},
@@ -23,17 +23,9 @@ void get_opcode(stack_t **stack, char *cmd, unsigned int line_number)
 
 	unsigned int i;
 
-	if (cmd == NULL)
-		return;
-
 	for (i = 0; op_funcs[i].opcode; i++)
 	{
-		if (strcmp(op_funcs[i].opcode, cmd) == 0)
-		{
+		if (strcmp(op_funcs[i].opcode, function_name) == 0)
 			op_funcs[i].f(stack, line_number);
-			return;
-		}
 	}
-	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, cmd);
-	arg = "error";
 }

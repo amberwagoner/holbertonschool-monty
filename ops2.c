@@ -7,32 +7,26 @@
 */
 void add(stack_t **stack, unsigned int line_number)
 {
-	stack_t *current = NULL;
-	int x, y;
+	stack_t *p = (*stack);
+	int length = 0;
+	int sum = 0;
 
-	if (!stack)
+	while (p != NULL)
+	{
+		length++;
+		p = p->next;
+	}
+	if (length < 2)
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
-		arg = "error";
-		return;
+		exit(EXIT_FAILURE);
 	}
-
-	current = *stack;
-	x = current->n;
-	current = current->prev;
-
-	if (!current)
+	else
 	{
-		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
-		arg = "error";
-		return;
+		sum = (*stack)->n + (*stack)->next->n;
+		(*stack)->next->n = sum;
+		pop(stack, line_number);
 	}
-
-	y = current->n;
-	current->n = (x + y);
-	*stack = current;
-	current = current->next;
-	free(current);
 }
 
 /**
@@ -42,6 +36,6 @@ void add(stack_t **stack, unsigned int line_number)
 */
 void nop(stack_t **stack, unsigned int line_number)
 {
-	(void) stack;
-	(void) line_number;
+	(void)stack;
+	(void)line_number;
 }

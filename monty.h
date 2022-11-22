@@ -1,8 +1,6 @@
 #ifndef MONTY_H
 #define MONTY_H
 
-#define  _POSIX_C_SOURCE 200809L
-
 /* Libraries */
 #include <stdio.h>
 #include <stdlib.h>
@@ -13,6 +11,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <limits.h>
+#define VALID 1
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -49,9 +48,8 @@ extern char *arg;
 char *arg;
 
 /* Prototypes */
-
 /* get_opcode */
-void get_opcode(stack_t **stack, char *cmd, unsigned int line_number);
+void get_op(char *function_name, unsigned int line_number, stack_t **stack);
 
 /* ops.c */
 void push(stack_t **stack, unsigned int line_number);
@@ -67,5 +65,12 @@ void nop(stack_t **stack, unsigned int line_number);
 /* free_stack */
 void free_stack(stack_t **stack);
 
+/* helper_functions */
+void read_line(char *line, unsigned int line_number, stack_t **stack);
+int digits(char *input);
+char *input;
+int valid(char *function_name);
+void print_error(char *line, unsigned int line_number);
+int is_string_number(char *string);
 
 #endif /* MONTY_H */
