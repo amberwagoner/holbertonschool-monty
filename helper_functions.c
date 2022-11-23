@@ -1,4 +1,5 @@
 #include "monty.h"
+
 /**
  * read_line - intrepets the line
  * @line: string containnig the line
@@ -42,6 +43,7 @@ void read_line(char *line, unsigned int line_number, stack_t **stack)
 			get_op(function_name, line_number, stack);
 	}
 }
+
 /**
  * is_string_number - checks if string is a number
  * @string: string
@@ -62,6 +64,7 @@ int is_string_number(char *string)
 	}
 	return (0);
 }
+
 /**
  * valid - checks if the syntax is valid
  * @function_name: name of the function that can be "push"
@@ -80,6 +83,7 @@ int valid(char *function_name)
 	}
 	return (0);
 }
+
 /**
  * print_error - print error
  * @line:string containing the line
@@ -91,4 +95,23 @@ void print_error(char *line, unsigned int line_number)
 	(void)line;
 
 	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, line);
+}
+
+/**
+ * free_stack - print error
+ * @stack: pointer to stack head
+ * Return: void, nothingness
+ */
+void free_stack(stack_t **stack)
+{
+	stack_t *ptr, *tmp;
+
+	ptr = *stack;
+	while (ptr)
+	{
+		tmp = ptr;
+		ptr = ptr->next;
+		free(tmp);
+		tmp = NULL;
+	}
 }

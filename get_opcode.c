@@ -10,7 +10,7 @@
 
 void get_op(char *function_name, unsigned int line_number, stack_t **stack)
 {
-	instruction_t op_funcs[] = {
+	instruction_t inst[] = {
 		{"push", push},
 		{"pall", pall},
 		{"pop", pop},
@@ -23,9 +23,11 @@ void get_op(char *function_name, unsigned int line_number, stack_t **stack)
 
 	unsigned int i;
 
-	for (i = 0; op_funcs[i].opcode != NULL; i++)
+	for (i = 0; inst[i].opcode != NULL; i++)
 	{
-		if (strcmp(op_funcs[i].opcode, function_name) == 0)
-			op_funcs[i].f(stack, line_number);
+		if (strcmp(inst[i].opcode, function_name) == 0)
+		{
+			inst[i].f(stack, line_number);
+		}
 	}
 }

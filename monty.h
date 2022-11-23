@@ -58,9 +58,6 @@ void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
 
-/* free_stack */
-void free_stack(stack_t **stack);
-
 /* helper_functions */
 void read_line(char *line, unsigned int line_number, stack_t **stack);
 int digits(char *input);
@@ -68,5 +65,6 @@ char *input;
 int valid(char *function_name);
 void print_error(char *line, unsigned int line_number);
 int is_string_number(char *string);
+void free_stack(stack_t **stack);
 
 #endif /* MONTY_H */
