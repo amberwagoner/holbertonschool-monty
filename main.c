@@ -1,12 +1,10 @@
 #include "monty.h"
-
 /**
-* main - reads lines of user-given bytecode file and runs opcodes
-* @argc: number of arguments given
-* @argv: arguments given
-* Return: success or error
-*/
-
+ * main - monty program
+ * @argc: number of arguments
+ * @argv: argument value (filename)
+ * Return: Always 0 (Success)
+ */
 int main(int argc, char **argv)
 {
 	FILE *fp;

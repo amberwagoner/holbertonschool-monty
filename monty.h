@@ -44,8 +44,8 @@ typedef struct instruction_s
 } instruction_t;
 
 /* Prototypes */
-/* get_opcode */
-void get_op(char *function_name, unsigned int line_number, stack_t **stack);
+/* parse_me */
+void parse_me(char *function_name, unsigned int line_number, stack_t **stack);
 
 /* ops.c */
 void push(stack_t **stack, unsigned int line_number);

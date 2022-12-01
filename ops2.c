@@ -1,10 +1,9 @@
 #include "monty.h"
-
 /**
-* add - add top two elements of the stack
-* @stack: pointer to the stack
-* @line_number: current line number
-*/
+ * add - adds 2 numbers
+ * @stack:stack
+ * @line_number: line number
+ */
 void add(stack_t **stack, unsigned int line_number)
 {
 	stack_t *p = (*stack);
@@ -30,10 +29,10 @@ void add(stack_t **stack, unsigned int line_number)
 }
 
 /**
-* nop - doesn't do anything
-* @stack: pointer to the stack
-* @line_number: current line number
-*/
+ * nop - doesn’t do anything
+ * @stack: the pointer to the stack
+ * @line_number: line of the file that being trated
+ */
 void nop(stack_t **stack, unsigned int line_number)
 {
 	(void)stack;
